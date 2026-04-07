@@ -1,0 +1,178 @@
+:root {
+    --space-black: #020205;
+    --star-white: #ffffff;
+    --earth-blue: #2271b3;
+    --mars-red: #e27b58;
+    --sun-gold: #ffcc00;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    background-color: var(--space-black);
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden; /* Keeps the universe contained */
+}
+
+.universe {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --- ANIMATIONS 1 & 2: Background Layers --- */
+.stars {
+    position: absolute;
+    width: 200%; height: 200%;
+    background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+    animation: moveStars 100s linear infinite;
+}
+
+@keyframes moveStars {
+    from { transform: translate(0, 0); }
+    to { transform: translate(-50%, -50%); }
+}
+
+.twinkle {
+    position: absolute;
+    width: 100%; height: 100%;
+    background: transparent url('https://www.transparenttextures.com/patterns/white-diamond-dark.png') repeat;
+    opacity: 0.3;
+    animation: twinkleEffect 4s ease-in-out infinite;
+}
+
+@keyframes twinkleEffect {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 0.6; }
+}
+
+/* --- ANIMATION 3: Pulsing Nebula --- */
+.nebula {
+    position: absolute;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(106,0,255,0.2) 0%, rgba(0,0,0,0) 70%);
+    filter: blur(50px);
+    animation: nebulaPulse 10s infinite alternate;
+}
+
+@keyframes nebulaPulse {
+    from { transform: scale(1); opacity: 0.4; }
+    to { transform: scale(1.5); opacity: 0.7; }
+}
+
+/* --- ANIMATION 4: Glitch Text --- */
+.glitch-text {
+    font-size: 5rem;
+    letter-spacing: 15px;
+    position: relative;
+    animation: glitch 3s infinite;
+}
+
+@keyframes glitch {
+    0% { text-shadow: 2px 0 red, -2px 0 blue; }
+    20% { text-shadow: -2px 0 red, 2px 0 blue; }
+    40% { text-shadow: 2px -2px red, -2px 2px blue; }
+    100% { text-shadow: 2px 0 red, -2px 0 blue; }
+}
+
+/* --- ANIMATION 5: Button Glow & Hover --- */
+.explore-btn {
+    padding: 15px 40px;
+    background: transparent;
+    border: 2px solid #00d4ff;
+    color: #00d4ff;
+    cursor: pointer;
+    transition: 0.3s;
+    animation: borderGlow 2s infinite;
+}
+
+.explore-btn:hover {
+    background: #00d4ff;
+    color: black;
+    box-shadow: 0 0 40px #00d4ff;
+}
+
+@keyframes borderGlow {
+    0%, 100% { box-shadow: 0 0 5px #00d4ff; }
+    50% { box-shadow: 0 0 20px #00d4ff; }
+}
+
+/* --- SOLAR SYSTEM (ANIMATIONS 6, 7, 8, 9) --- */
+.solar-system {
+    position: absolute;
+    width: 500px; height: 500px;
+}
+
+.sun {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 60px; height: 60px;
+    background: var(--sun-gold);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 50px orange;
+    animation: sunFlare 4s infinite alternate;
+}
+
+@keyframes sunFlare {
+    to { box-shadow: 0 0 80px yellow; transform: translate(-50%, -50%) scale(1.1); }
+}
+
+.orbit {
+    position: absolute;
+    top: 50%; left: 50%;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.earth-orbit { width: 200px; height: 200px; animation: rotate 10s linear infinite; }
+.mars-orbit { width: 350px; height: 350px; animation: rotate 20s linear infinite; }
+
+@keyframes rotate {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.earth {
+    position: absolute;
+    top: 0; left: 50%;
+    width: 20px; height: 20px;
+    background: var(--earth-blue);
+    border-radius: 50%;
+}
+
+.moon {
+    position: absolute;
+    width: 6px; height: 6px;
+    background: #ddd;
+    border-radius: 50%;
+    top: -15px;
+    animation: rotate 3s linear infinite;
+}
+
+.mars {
+    position: absolute;
+    top: 0; left: 50%;
+    width: 15px; height: 15px;
+    background: var(--mars-red);
+    border-radius: 50%;
+}
+
+/* --- ANIMATION 10: Floating Astronaut --- */
+.astronaut {
+    position: absolute;
+    bottom: 10%;
+    right: 10%;
+    font-size: 3rem;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-30px) rotate(15deg); }
+}
